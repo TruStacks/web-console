@@ -21,3 +21,5 @@ Run this command in a terminal to start the dev server without crashing:
 ```
 export NODE_OPTIONS=--openssl-legacy-provider ; npm start
 ```
+
+Alternatively, run `make start` to run the react dev server.

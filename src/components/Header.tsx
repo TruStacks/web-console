@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  Header,
   Menu,
   Image,
   Icon,
   Segment,
   SemanticICONS,
 } from "semantic-ui-react";
+import ToolchainSubHeader from "./ToolchainSubHeader";
 
 import logo from "../assets/trustacks.svg";
 import applications from "../assets/applications.svg";
@@ -14,14 +14,13 @@ import settings from "../assets/settings.svg";
 import { useAppStatus } from "../hooks/appStatus";
 
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { BreadcrumbSubHeader } from "./BreadcumbSubHeader";
 
-const statusIcons: { [key: string]: SemanticICONS } = {
-  healthy: "check circle",
-};
 
 function TrustacksHeader(): JSX.Element {
   const { appStatus } = useAppStatus();
+  const { pathname } = useLocation();
 
   return (
     <Segment.Group className="trustacks-header">
@@ -32,33 +31,40 @@ function TrustacksHeader(): JSX.Element {
               <Image size="small" src={logo} />
             </Menu.Item>
           </Link>
-          <Menu.Item>
-            <Icon>
-              <Image src={applications} />
-            </Icon>
-            Applications
+          <Menu.Item link className="header-link">
+            <Link to="/applications">
+              <Icon>
+                <Image src={applications} />
+              </Icon>
+              Applications
+            </Link>
           </Menu.Item>
-          <Menu.Item>
-            <Icon>
-              <Image src={settings} />
-            </Icon>
-            Settings
+          <Menu.Item link className="header-link">
+            <Link to="/settings">
+              <Icon>
+                <Image src={settings} />
+              </Icon>
+              Settings
+            </Link>
           </Menu.Item>
+          <Menu.Menu className="header-user-controls" position="right">
+            {/* placeholder rn */}
+            <Menu.Item className="header-user-tab">Joe Schmoe</Menu.Item>
+            <Menu.Item className="header-user-logout">
+              <Icon name="log out" />
+            </Menu.Item>
+          </Menu.Menu>
         </Menu>
       </Segment>
-      {appStatus && appStatus.status && (
-        <Segment textAlign="left" padded>
-          <Header as="h4">
-            <Icon
-              name={statusIcons[appStatus.status]}
-              color={"green"}
-              size="large"
-            />
-            {appStatus.status[0].toUpperCase() + appStatus.status.substring(1)}
-          </Header>
+      {appStatus && (
+        <Segment textAlign="left" className="sub-header">
+          {pathname == "/" ? (
+            <ToolchainSubHeader appStatus={appStatus} />
+          ) : (
+            <BreadcrumbSubHeader />
+          )}
         </Segment>
       )}
-      {/* </> */}
     </Segment.Group>
   );
 }

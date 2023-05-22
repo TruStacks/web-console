@@ -1,0 +1,72 @@
+
+
+.app-row {
+  background-color: white;
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.app-row-left-col, .app-row-right-col {
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+.app-row-left-col {
+  width: 100%;
+  justify-content: stretch;
+}
+
+.app-row-right-col {
+  align-items: center;
+  border-left: 1px solid rgba(34,36,38,.15);
+  width: 400px;
+  /* max-width: 400px; */
+}
+
+.app-row-left-col-name, .app-row-left-col-buttons {
+  display: flex;
+  /* color: red; */
+}
+
+.app-row-left-col-name .icon {
+  margin-right: 10px;
+}
+
+.app-row-left-col-buttons {
+  margin-left: auto;
+}
+
+.app-row-left-col-buttons .icon:first-child {
+  padding-right:  28px;
+}
+
+.app-row-right-col .progress {
+  margin: 0 !important;
+  background-color: #f3f3f3 !important; 
+}
+
+.app-row-right-col .external-icon {
+  margin: 0 10px;
+}
+
+.app-row-right-col .progress.purple .bar {
+  background-color: #9B7FFF !important;
+}
+
+.app-row-right-col .deliver-button {
+  width: 97px;
+}
+
+.app-row-right-col .deliver-button.green {
+  background-color: #44AC97 !important;
+}
+
+.app-row-right-col .disabled {
+  background-color: #ddd !important;
+}
+
+.app-row-right-col .grey-svg {
+  filter: invert(74%) sepia(2%) saturate(0%) hue-rotate(5deg) brightness(94%) contrast(86%)
+}

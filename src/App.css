@@ -8,3 +8,7 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+.bar.purple {
+  background-color: red !important
+}

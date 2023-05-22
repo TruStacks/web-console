@@ -1,0 +1,41 @@
+.ui.segments.trustacks-header {
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+/* .ui.segments.trustacks-header>.segment:last-child {
+  border-radius: 0;
+} */
+
+.ui.ui.segments.trustacks-header .link.item:hover {
+  background-color: lavender;
+}
+
+.header-link  a {
+  font-weight: bold;
+  color: #AAA;
+}
+
+.header-link a:hover {
+  color: #AAA;
+}
+
+.ui.secondary.menu .right.menu.header-user-controls .item {
+  padding: 4px;
+}
+
+.ui.secondary.menu .right.menu.header-user-controls .header-user-tab {
+  color: #333;
+}
+
+.ui.secondary.menu .right.menu.header-user-controls .header-user-logout {
+  color: #AAA;
+}
+
+
+h4.ui.header.toolchain-status {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 14px;
+}

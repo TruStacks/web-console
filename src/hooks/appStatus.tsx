@@ -1,13 +1,10 @@
 import React, { useState, createContext } from "react";
 import { useContext } from "react";
-import {
-  SemanticCOLORS,
-  SemanticICONS,
-} from "semantic-ui-react/dist/commonjs/generic";
 
-type AppStatus = {
+
+export type AppStatus = {
   status: string;
-  components: { [key: string]: {kind: string, status: string }}
+  components: { [key: string]: {kind: string, status: string, name: string }}
 };
 
 interface AppStatusContextInterface {
