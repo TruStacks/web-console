@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Segment, Icon, Header, Popup, Loader, Grid } from "semantic-ui-react";
 
-import { useAppStatus } from "../hooks/appStatus";
+import { useToolchainState } from "../hooks/toolchainState";
 import { getToolchainInfo } from "../modules/apiRequests";
-
-import "./Home.css";
 import { setDocumentTitle } from "../hooks/documentTitle";
+
+import { ReactComponent as NetworkIcon } from "../assets/network.svg";
+import "./Home.css";
 
 type Component = { name: string; status: string };
 
@@ -39,30 +40,28 @@ const ComponentSegment = ({ name, status }: Component) => {
 };
 
 function Home(): JSX.Element {
-  const { appStatus, setAppStatus } = useAppStatus();
+  const { toolchainState } = useToolchainState();
   const [loading, setLoading] = useState(true);
   const [coreComponents, setCoreComponents] = useState<Component[]>();
   const [extensionComponents, setExtensionComponents] = useState<Component[]>();
-  
-  useEffect(() => {
-    (async function () {
-      setDocumentTitle()
-      const res = await getToolchainInfo();
-      if (res.result) {
-        setAppStatus(res.result);
-      }
-      setLoading(false);
-    })();
-  }, []);
+
+  useEffect(() => { setDocumentTitle("") }, []);
 
   useEffect(() => {
-    if (appStatus && appStatus.components) {
+    // disable spinner if data is fetched
+    if (toolchainState && toolchainState.status !== "initializing") {
+      setLoading(false);
+    } else {
+      setLoading(true);
+    }
+
+    if (toolchainState && toolchainState.components) {
       let newCore: Component[] = [];
       let newSupp: Component[] = [];
-      Object.keys(appStatus.components).map((i) => {
-        const { name } = appStatus.components[i];
-        const n: Component = { ...appStatus.components[i], name };
-        switch (appStatus.components[i].kind) {
+      Object.keys(toolchainState.components).map((i) => {
+        const { name } = toolchainState.components[i];
+        const n: Component = { ...toolchainState.components[i], name };
+        switch (toolchainState.components[i].kind) {
           case "core":
             newCore = [...newCore, n];
             break;
@@ -74,7 +73,7 @@ function Home(): JSX.Element {
         setExtensionComponents(newSupp);
       });
     }
-  }, [appStatus]);
+  }, [toolchainState]);
 
   return (
     <>
@@ -92,7 +91,7 @@ function Home(): JSX.Element {
           <Segment.Group className="components">
             <Segment padded className="core-components">
               <Header as="h4">
-                <Icon name="share alternate" color="teal" />
+                <NetworkIcon className="components-icon" />
                 Core Components
               </Header>
             </Segment>
@@ -110,7 +109,7 @@ function Home(): JSX.Element {
           <Segment.Group className="components">
             <Segment padded className="extension-components">
               <Header as="h4">
-                <Icon name="share alternate" color="teal" />
+                <NetworkIcon className="components-icon" />
                 Extension Components
               </Header>
             </Segment>

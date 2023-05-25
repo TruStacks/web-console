@@ -3,24 +3,26 @@
   border-radius: 0;
 }
 
-/* .ui.segments.trustacks-header>.segment:last-child {
-  border-radius: 0;
-} */
-
 .ui.ui.segments.trustacks-header .link.item:hover {
   background-color: lavender;
+  transition: .2s;
+  color: #AAA;
 }
 
-.header-link  a {
+.ui .link.item.header-link {
   font-weight: bold;
   color: #AAA;
 }
 
-.header-link a:hover {
-  color: #AAA;
+.header-button-icon {
+  margin-right: 12px;
 }
 
-.ui.secondary.menu .right.menu.header-user-controls .item {
+
+
+/* Unused, for potential use later */
+
+/* .ui.secondary.menu .right.menu.header-user-controls .item {
   padding: 4px;
 }
 
@@ -29,13 +31,5 @@
 }
 
 .ui.secondary.menu .right.menu.header-user-controls .header-user-logout {
-  color: #AAA;
-}
-
-
-h4.ui.header.toolchain-status {
-  display: flex;
-  align-items: center;
-  padding: 6px 12px;
-  font-size: 14px;
-}
+  color: #aaa;
+} */

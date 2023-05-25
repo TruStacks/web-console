@@ -11,7 +11,7 @@ export function BreadcrumbSubHeader() {
           circular
           compact
           icon="home"
-          style={{ backgroundColor: "#9B7FFF", color: "white" }}
+          style={{ backgroundColor: "#9B7FFF", color: "white", marginLeft: "12px" }}
         />
       </Breadcrumb.Section>
       <Breadcrumb.Divider style={{ margin: "0 8px" }} />

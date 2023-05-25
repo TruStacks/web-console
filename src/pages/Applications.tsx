@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {setDocumentTitle} from "../hooks/documentTitle"
 
 import {
   Button,
@@ -8,8 +9,6 @@ import {
   Progress,
   Segment,
 } from "semantic-ui-react";
-
-import {getApplications} from "../modules/apiRequests";
 
 // import editIcon from "../assets/edit.svg";
 import exportIcon from "../assets/export.svg";
@@ -85,6 +84,10 @@ function ApplicationRow(props: ApplicationSegmentProps) {
       ? 0
       : Math.floor((Number(actionIndex) * 100) / Number(actionCount));
   const disabled = status === "failed" || progressPercent != 100;
+
+  useEffect(() => {
+    setDocumentTitle("Applications")
+  })
 
   return (
     <Segment.Group style={{ marginBottom: "20px" }}>

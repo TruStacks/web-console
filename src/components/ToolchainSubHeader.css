@@ -1,0 +1,59 @@
+/* Animations */
+
+/* Toolchain status icon effects */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+    /* transform: rotate(720deg); */
+  }
+}
+
+
+/* Styling */
+
+h4.ui.header.toolchain-status {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #777;
+}
+
+.toolchain-status-icon {
+  height: 20px;
+  width: 20px;
+  margin-right: 12px;
+}
+
+.toolchain-status-icon.purple {
+  filter: invert(73%) sepia(59%) saturate(5755%) hue-rotate(217deg) brightness(99%) contrast(111%);
+}
+
+.toolchain-status-icon.green {
+  filter: invert(48%) sepia(94%) saturate(1010%) hue-rotate(138deg) brightness(91%) contrast(101%);
+}
+
+.toolchain-status-icon.red {
+  filter: invert(60%) sepia(66%) saturate(5488%) hue-rotate(331deg) brightness(105%) contrast(82%);
+}
+
+/* spin with bezier curve speed */
+.toolchain-status-icon.spin {
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-duration: 1200ms;
+  /* we can tweak the spin if it's too flashy */
+  animation-timing-function: cubic-bezier(0.65, 0, 0.60, 1);
+}
+
+/* smooth roation */
+.toolchain-status-icon.rotate {
+  animation-name: spin;
+  animation-iteration-count: infinite;
+  animation-duration: 1200ms;
+  animation-timing-function: linear;
+}
+

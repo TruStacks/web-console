@@ -8,7 +8,7 @@
   color: #aaa;
   font-weight: bold;
   font-size: 15px;
-  padding-top: 8px;
+  padding-top: 4px;
 }
 
 .component-name {
@@ -17,4 +17,11 @@
   margin-top: 12px;
   margin-bottom: 12px;
   color: #777;
+}
+
+.components-icon {
+  height: 24px;
+  width: 24px;
+  margin-right: 12px;
+  filter: invert(48%) sepia(94%) saturate(1010%) hue-rotate(138deg) brightness(91%) contrast(101%);
 }
