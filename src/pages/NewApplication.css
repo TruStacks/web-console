@@ -1,0 +1,23 @@
+.workflow-form.ui.segments .ui.segment {
+  padding: 18px;
+}
+
+.ui.segment .ui.form .field {
+  margin-bottom: 24px;
+}
+
+.ui.segment .ui.form .field label {
+  color: #777;
+}
+
+.ui.segment .workflow-name {
+  color: #777;
+  font-size: 10pt;
+  margin-right: 18px;
+}
+
+.ui.segment .workflow-about {
+  font-weight: bold;
+  color: #AAA;
+  font-size: 10pt;
+}

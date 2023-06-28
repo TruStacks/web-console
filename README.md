@@ -1,4 +1,6 @@
-![TruStacks logo](https://raw.githubusercontent.com/TruStacks/web-console/main/src/assets/trustacks.svg)
+<p><img src="https://i.imgur.com/awXcDpX.png" height="" alt="trustacks logo"/></p>
+
+---
 
 # TruStacks Web-Console
 

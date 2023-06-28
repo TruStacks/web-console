@@ -1,7 +1,6 @@
-
-
 .app-row {
   background-color: white;
+  height: 70px;
   display: flex;
   justify-content: stretch;
   align-items: center;
@@ -9,8 +8,10 @@
 
 .app-row-left-col, .app-row-right-col {
   padding: 12px 20px;
+  height: 70px;
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .app-row-left-col {
@@ -20,7 +21,7 @@
 
 .app-row-right-col {
   align-items: center;
-  border-left: 1px solid rgba(34,36,38,.15);
+  border-left: 1px solid #F3F3F3;
   width: 400px;
   /* max-width: 400px; */
 }
@@ -69,4 +70,8 @@
 
 .app-row-right-col .grey-svg {
   filter: invert(74%) sepia(2%) saturate(0%) hue-rotate(5deg) brightness(94%) contrast(86%)
+}
+
+.ui.progress.app-progress.error .bar {
+  background-color: #E85E5E !important;
 }

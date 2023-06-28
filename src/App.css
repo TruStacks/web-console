@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   min-height: 100vh;
 }
 
@@ -9,6 +9,34 @@
   pointer-events: none;
 }
 
-.bar.purple {
-  background-color: red !important
+
+main {
+  margin: 30px;
+}
+
+/* SVG Icon color filters */
+
+.white-icon {
+  filter: invert(99%) sepia(3%) saturate(16%) hue-rotate(321deg)
+    brightness(105%) contrast(101%);
+}
+
+.grey-icon {
+  filter: invert(69%) sepia(0%) saturate(18%) hue-rotate(227deg)
+    brightness(102%) contrast(82%);
+}
+
+.green-icon {
+  filter: invert(48%) sepia(94%) saturate(1010%) hue-rotate(138deg)
+    brightness(91%) contrast(101%);
+}
+
+.yellow-icon {
+  filter: invert(85%) sepia(7%) saturate(2712%) hue-rotate(336deg)
+    brightness(97%) contrast(95%);
+}
+
+.purple-icon {
+  filter: invert(73%) sepia(59%) saturate(5755%) hue-rotate(217deg)
+    brightness(99%) contrast(111%);
 }

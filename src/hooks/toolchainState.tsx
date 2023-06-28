@@ -1,11 +1,17 @@
-import React, { useState, createContext, useEffect } from "react";
-import { useContext } from "react";
-import { useWebSocket } from "react-use-websocket/dist/lib/use-websocket";
+import React, { useState, useContext, createContext, useEffect } from "react";
 import { getToolchainInfo } from "../modules/apiRequests";
+import { useWebSocketEvents } from "./webSocketEvents";
 
 export type ToolchainState = {
   status: string;
-  components: { [key: string]: { kind: string; status: string; name: string } };
+  deployKey: string;
+  components: {
+    [key: string]: {
+      kind: string;
+      status: string;
+      name: string;
+    };
+  };
 };
 
 interface ToolchainStateContextInterface {
@@ -22,22 +28,18 @@ export function ToolchainStateProvider({
 }: {
   children: JSX.Element | JSX.Element[];
 }): JSX.Element {
+  const { messages } = useWebSocketEvents();
   const [toolchainState, setToolchainState] = useState<ToolchainState>({
-    status: "initializing",
+    status: "loading",
+    deployKey: "",
     components: {},
   });
-  const { lastMessage } = useWebSocket(
-    "wss://ts-controller.tc.trustacks.io/notifications"
-  );
 
   // fetch request for Toolchain data
   const updateToolchainState = async () => {
     const res = await getToolchainInfo();
-    if (res.result) {
-      setToolchainState(res.result);
-    } else {
-      console.error(res);
-    }
+    if (res.result) setToolchainState(res.result);
+    else console.error(res);
   };
 
   // Initial page load
@@ -47,20 +49,24 @@ export function ToolchainStateProvider({
 
   // Websocket notifications
   useEffect(() => {
-    if (lastMessage !== null) {
-      const event = JSON.parse(lastMessage.data);
-      if (
-        event.type === "io.trustacks.pipeline.ProgressNextEvent" ||
-        event.type === "io.trustacks.toolchain.StatusChangeEvent" ||
-        event.type === "io.trustacks.toolchain.ComponentStatusChangeEvent"
-      ) {
-        updateToolchainState();
+    if (messages && messages[0] !== null) {
+      const event = JSON.parse(messages[0].data);
+      console.log(event);
+      switch (event.type) {
+        // refresh toolchain info
+        case "io.trustacks.pipeline.ProgressNextEvent":
+        case "io.trustacks.toolchain.StatusChangeEvent":
+        case "io.trustacks.toolchain.ComponentStatusChangeEvent":
+          updateToolchainState();
+          break;
       }
     }
-  }, [lastMessage]);
+  }, [messages]);
 
   return (
-    <ToolchainStateContext.Provider value={{ toolchainState, setToolchainState }}>
+    <ToolchainStateContext.Provider
+      value={{ toolchainState, setToolchainState }}
+    >
       {children}
     </ToolchainStateContext.Provider>
   );

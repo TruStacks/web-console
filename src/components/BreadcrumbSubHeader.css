@@ -1,0 +1,48 @@
+.ui.breadcrumb .breadcrumb-link {
+  color: #aaa;
+}
+
+.ui.breadcrumb .breadcrumb-link:hover {
+  color: #9b7fff;
+}
+.ui.segment.sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ui.button.new-application-button,
+.ui.button.deploy-key-button {
+  border-radius: 5px;
+}
+
+.ui.button.new-application-button {
+  display: flex;
+  align-items: center;
+  background-color: #9b7fff;
+  color: white;
+  height: 30px;
+}
+
+.ui.button.new-application-button:hover {
+  background-color: #9b7fff;
+  color: white;
+}
+
+.ui.button.deploy-key-button {
+  display: flex;
+  align-items: center;
+  background-color: #44ac97;
+  color: white;
+  height: 30px;
+}
+
+.ui.button.deploy-key-button:hover {
+  background-color: #44ac97;
+  color: white;
+}
+
+.ui.button.deploy-key-button:focus {
+  background-color: #44ac97;
+  color: white;
+}

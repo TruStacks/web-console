@@ -13,7 +13,7 @@
 
 .component-name {
   font-weight: bold;
-  margin-left: 12px;
+  margin-left: 10px;
   margin-top: 12px;
   margin-bottom: 12px;
   color: #777;
@@ -23,5 +23,28 @@
   height: 24px;
   width: 24px;
   margin-right: 12px;
-  filter: invert(48%) sepia(94%) saturate(1010%) hue-rotate(138deg) brightness(91%) contrast(101%);
+}
+
+.circle.component-status-dot {
+  margin-right: 18px;
+  cursor: help;
+}
+
+
+@keyframes fade-in-out {
+  from {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+.fade-in-out {
+  animation-name: fade-in-out;
+  animation-iteration-count: infinite;
+  animation-duration: 2000ms;
+  animation-timing-function: ease-in-out;
 }
